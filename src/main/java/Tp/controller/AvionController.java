@@ -202,7 +202,7 @@ public class AvionController {
     }
 
     @CrossOrigin
-    @PutMapping("/Avions/")
+    @PostMapping("/Avions/")
     public JsonData teste( @RequestParam(name = "base64") String id) throws Exception {
         System.out.println(id);
         return null;
