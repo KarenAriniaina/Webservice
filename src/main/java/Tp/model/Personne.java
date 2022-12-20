@@ -101,15 +101,4 @@ public class Personne extends ObjetBDD {
         if(jwt!=null) return true;
         return false;
     }
-
-    /*public static void main(String[] args) throws Exception {
-        Personne p = new Personne();
-        p.setIdPersonne("Personne_1");
-        //p.setToken("eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiSmFuZSBEb2UiLCJlbWFpbCI6ImphbmVAZXhhbXBsZS5jb20iLCJzdWIiOiJqYW5lIiwianRpIjoiYTcyMjZlN2EtMDdkNS00NjdmLTk4MzAtYzVjODg5MTAyZjcwIiwiaWF0IjoxNjcxMTAzODc4LCJleHAiOjE2NzExMDQxNzh9.Q5mYZ4TvNzeLjle9jpIZ7xj6p1gnWgxAHqZKfmiGM0I");
-        //Jws<Claims> jwt = p.parseJwt();
-        //Bearer eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiSmFuZSBEb2UiLCJlbWFpbCI6ImphbmVAZXhhbXBsZS5jb20iLCJzdWIiOiJqYW5lIiwianRpIjoiYTcyMjZlN2EtMDdkNS00NjdmLTk4MzAtYzVjODg5MTAyZjcwIiwiaWF0IjoxNjcxMTAzODc4LCJleHAiOjE2NzExMDQxNzh9.Q5mYZ4TvNzeLjle9jpIZ7xj6p1gnWgxAHqZKfmiGM0I
-        System.out.println(p.VerifToken());
-        //System.out.println(p.getToken());
-        //System.err.println(p.VerifierToken("Bearer eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiSmFuZSBEb2UiLCJlbWFpbCI6ImphbmVAZXhhbXBsZS5jb20iLCJzdWIiOiJqYW5lIiwianRpIjoiODNmZTUyNzQtMWMxOS00MTc0LThjZDYtMTk3MzlhZmYwNDViIiwiaWF0IjoxNjcxMTA0MTA5LCJleHAiOjE2NzExMDQ0MDl9.Pt8iy4S9pDLAkNd49sMSOYW6ZEQcikquY6W3NK95vJc"));
-    }*/
 }

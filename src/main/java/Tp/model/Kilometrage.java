@@ -6,7 +6,7 @@ import Tp.dao.ObjetBDD;
 
 public class Kilometrage extends ObjetBDD{
 	private String idKilometrage;
-	private String idVehicule;
+	private String idAvion;
 	private Date date;
 	private double debutKm;
 	private double finKm;
@@ -24,14 +24,12 @@ public class Kilometrage extends ObjetBDD{
         this.idKilometrage = idKilometrage;
     }
 
-    
-
-    public String getIdVehicule() {
-        return idVehicule;
+    public String getIdAvion() {
+        return idAvion;
     }
 
-    public void setIdVehicule(String idVehicule) {
-        this.idVehicule = idVehicule;
+    public void setIdAvion(String idAvion) {
+        this.idAvion = idAvion;
     }
 
     public Date getDate() {
