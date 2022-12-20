@@ -25,11 +25,11 @@ public class Assurance extends ObjetBDD {
         this.idAssurance = idAssurance;
     }
 
-    public String getidAvion() {
+    public String getIdAvion() {
         return idAvion;
     }
 
-    public void setidAvion(String idAvion) {
+    public void setIdAvion(String idAvion) {
         this.idAvion = idAvion;
     }
 

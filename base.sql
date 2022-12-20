@@ -20,6 +20,7 @@ CREATE sequence s_DateEntretien;
 CREATE sequence s_Entretien;
 CREATE sequence s_Kilometrage;
 CREATE sequence s_Modele;
+CREATE sequence s_Personne;
 
 CREATE TABLE Assurance (idAssurance varchar(30) NOT NULL, idAvion varchar(30) NOT NULL, DateDebut date NOT NULL, DateFin date NOT NULL, PRIMARY KEY (idAssurance));
 INSERT INTO Assurance(idAssurance,idAvion,datedebut,datefin)values('Assurance_'||nextval('s_Assurance'),'Avion_1','2022-11-10','2023-01-10');
@@ -38,6 +39,9 @@ INSERT into Entretien(idEntretien,Intitule)values('Entretient_'||nextval('s_Entr
 INSERT into Entretien(idEntretien,Intitule)values('Entretient_'||nextval('s_Entretien'),'Carburant');
 
 CREATE TABLE Kilometrage (idKilometrage varchar(30) NOT NULL, idAvion varchar(30) NOT NULL, date date NOT NULL, debutKm float8 NOT NULL, finKm float8 NOT NULL, PRIMARY KEY (idKilometrage));
+INSERT INTO Kilometrage(idKilometrage,idAvion,date,debutKm,finKm)values('Kilometrage_'||nextval('s_Kilometrage'),'Avion_1','2022-12-10',120000,12500);
+
+
 CREATE TABLE Modele (idModele varchar(30) NOT NULL, Intitule varchar(100) NOT NULL UNIQUE, PRIMARY KEY (idModele));
 
 INSERT into Modele(idModele,Intitule)values('Model_'||nextval('s_Modele'),'AirBus');
@@ -45,6 +49,8 @@ INSERT into Modele(idModele,Intitule)values('Model_'||nextval('s_Modele'),'Jet')
 
 
 CREATE TABLE Personne (idPersonne varchar(30) NOT NULL, nom varchar(100) NOT NULL, mail varchar(100) NOT NULL UNIQUE, passwords varchar(100) NOT NULL, PRIMARY KEY (idPersonne));
+INSERT INTO Personne(idPersonne,nom,mail,passwords)values('Personne_'||nextval('s_Personne'),'Admin','admin@gmail.com','root');
+
 ALTER TABLE Kilometrage ADD CONSTRAINT FKKilometrag226573 FOREIGN KEY (idAvion) REFERENCES Avion (idAvion);
 ALTER TABLE Assurance ADD CONSTRAINT FKAssurance79244 FOREIGN KEY (idAvion) REFERENCES Avion (idAvion);
 ALTER TABLE DateEntretien ADD CONSTRAINT FKDateEntret693585 FOREIGN KEY (idAvion) REFERENCES Avion (idAvion);
@@ -68,7 +74,7 @@ create or replace view v_Avion as
 
 DROP VIEW v_assuranceencours;
 create or replace view v_assuranceencours as 
-    SELECT *,EXTRACT (MONTH FROM age(NOW() + interval '3 month',Datefin)) as MoisFin FROM Assurance where datedebut <=now() and datefin >= now() ;
+    SELECT *,EXTRACT (MONTH FROM age(NOW() + interval '3 month',Datefin))::DOUBLE PRECISION as MoisFin FROM Assurance where datedebut <=now() and datefin >= now() ;
 
 
 DROP VIEW v_Entretient;
