@@ -1,5 +1,5 @@
 CREATE TABLE Assurance (idAssurance varchar(30) NOT NULL, idAvion varchar(30) NOT NULL, DateDebut date NOT NULL, DateFin date NOT NULL, PRIMARY KEY (idAssurance));
-CREATE TABLE Avion (idAvion varchar(30) NOT NULL, Nom varchar(100) NOT NULL UNIQUE, NbrPlace int4 NOT NULL, idModele varchar(30) NOT NULL, PRIMARY KEY (idAvion));
+CREATE TABLE Avion (idAvion varchar(30) NOT NULL, Nom varchar(100) NOT NULL UNIQUE, NbrPlace int4 NOT NULL, idModele varchar(30) NOT NULL, PhotoAvion text NOT NULL, PRIMARY KEY (idAvion));
 CREATE TABLE DateEntretien (idDateEntretien varchar(30) NOT NULL, idAvion varchar(30) NOT NULL, idEntretien varchar(30) NOT NULL, date date NOT NULL, PRIMARY KEY (idDateEntretien));
 CREATE TABLE Entretien (idEntretien varchar(30) NOT NULL, Intitule varchar(100) NOT NULL UNIQUE, PRIMARY KEY (idEntretien));
 CREATE TABLE Kilometrage (idKilometrage varchar(30) NOT NULL, idAvion varchar(30) NOT NULL, date date NOT NULL, debutKm float8 NOT NULL, finKm float8 NOT NULL, PRIMARY KEY (idKilometrage));
