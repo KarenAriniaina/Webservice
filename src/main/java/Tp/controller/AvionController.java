@@ -199,4 +199,11 @@ public class AvionController {
         }
         return json;
     }
+
+    @CrossOrigin
+    @GetMapping("/Avions/{st}")
+    public JsonData teste( @PathVariable(name = "st") String id) throws Exception {
+        System.out.println(id);
+        return null;
+    }
 }
