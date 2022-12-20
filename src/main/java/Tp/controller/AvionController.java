@@ -144,6 +144,7 @@ public class AvionController {
         return json;
     }
 
+    @CrossOrigin
     @GetMapping("/Avion/{id}/Assurances/")
     public JsonData findAssurance(@PathVariable(name = "id") String id) throws Exception {
         JsonData json = new JsonData();

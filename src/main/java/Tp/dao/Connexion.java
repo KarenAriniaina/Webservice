@@ -16,7 +16,7 @@ public class Connexion {
     public static Connection getConnection() throws Exception{
         Connection con=null;
         Class.forName("org.postgresql.Driver");
-        con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/avionws","postgres","root");
+        con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/avionws","postgres","karen");
         return con;
     }
 }

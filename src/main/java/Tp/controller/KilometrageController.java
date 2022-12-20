@@ -39,6 +39,7 @@ public class KilometrageController {
         return json;
     }
 
+    @CrossOrigin
     @GetMapping("/Kilometrages/{id}")
     public JsonData findById(@RequestParam String id) throws Exception {
         JsonData json = new JsonData();
@@ -60,7 +61,7 @@ public class KilometrageController {
         }
         return json;
     }
-
+    @CrossOrigin
     @PostMapping("/Kilometrage")
     public JsonData save(@RequestParam(value = "idAvion") String idAvion, @RequestParam(value = "date") Date date,
             @RequestParam(value = "debutKm") double debutKm, @RequestParam(value = "finKm") double finKm)
@@ -84,7 +85,7 @@ public class KilometrageController {
         }
         return json;
     }
-
+    @CrossOrigin
     @PutMapping("/Kilometrage/{id}")
     public JsonData Update(@RequestParam(value = "id") String id, @RequestParam(value = "idAvion") String idAvion,
             @RequestParam(value = "date") Date date, @RequestParam(value = "debutKm") double debutKm,
@@ -107,7 +108,7 @@ public class KilometrageController {
         }
         return json;
     }
-   
+
     // @DeleteMapping("/Kilometrages/{id}")
     // public JsonData delete(@RequestParam String id) throws Exception {
     // JsonData json = new JsonData();
