@@ -4,13 +4,11 @@ import Tp.JSonData.JsonData;
 
 import Tp.dao.ObjetBDD;
 import Tp.model.Assurance;
+import Tp.model.Avion;
+import Tp.model.DateEntretien;
 import Tp.model.Kilometrage;
 import Tp.model.Personne;
-import Tp.model.Vehicule;
-import Tp.model.VehiculeDelete;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,15 +17,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class VehiculeController {
+public class AvionController {
 
     @CrossOrigin
-    @GetMapping("/Vehicules")
+    @GetMapping("/Avions")
     public JsonData findAll() throws Exception {
         JsonData json = new JsonData();
         try {
-            ObjetBDD[] liste = new Vehicule().Find(null);
-            Vehicule[] lv = new Vehicule[liste.length];
+            ObjetBDD[] liste = new Avion().Find(null);
+            Avion[] lv = new Avion[liste.length];
 
             System.arraycopy(liste, 0, lv, 0, lv.length);
 
@@ -45,14 +43,14 @@ public class VehiculeController {
     }
 
     @CrossOrigin
-    @GetMapping("/Vehicule/{id}")
+    @GetMapping("/Avion/{id}")
     public JsonData findById(@PathVariable String id) throws Exception {
         JsonData json = new JsonData();
         try {
-            Vehicule km = new Vehicule();
-            km.setIdVehicule(id);
+            Avion km = new Avion();
+            km.setIdAvion(id);
             ObjetBDD[] liste = km.Find(null);
-            Vehicule[] lv = new Vehicule[liste.length];
+            Avion[] lv = new Avion[liste.length];
             System.arraycopy(liste, 0, lv, 0, lv.length);
             json.setData(lv);
             json.setMessage("Operation reussit");
@@ -67,13 +65,18 @@ public class VehiculeController {
     }
 
     @CrossOrigin
-    @PostMapping("/Vehicule")
-    public JsonData save(@RequestParam(value = "plaque") String numero, @RequestParam(value = "idmarque") String marque) throws Exception {
+    @PostMapping("/Avion")
+    public JsonData save(@RequestParam(value = "nom") String nom, @RequestParam(value = "NbrPlace") int NbrPlace,
+            @RequestParam(value = "Modele") String model,
+            @RequestParam(value = "photo") String photo) throws Exception {
         JsonData json = new JsonData();
         try {
-            Vehicule v = new Vehicule();
-            v.setPlaque(numero);
-            v.setIdMarque(marque);
+            Avion v = new Avion();
+            v.setIdModele(model);
+            v.setNbrPlace(NbrPlace);
+            v.setNom(nom);
+            v.setPhoto(photo);
+
             v.Create(null);
             json.setData(null);
             json.setMessage("Operation reussit");
@@ -87,46 +90,47 @@ public class VehiculeController {
         return json;
     }
 
-    @CrossOrigin
-    @DeleteMapping("/Vehicules/{id}")
-    public JsonData delete(@PathVariable(value = "id") String id) throws Exception {
-        JsonData json = new JsonData();
-        try {
-            VehiculeDelete km = new VehiculeDelete();
-            km.setIdVehicule(id);
-            km.Create(null);
-            json.setData(null);
-            json.setMessage("Operation reussit");
-            json.setStatus(true);
-        } catch (Exception e) {
-            json.setData(null);
-            json.setMessage("Operation echoue ");
-            json.setStatus(false);
-            json.setErreur(e.getMessage());
-        }
-        return json;
-    }
+    // @CrossOrigin
+    // @DeleteMapping("/Avions/{id}")
+    // public JsonData delete(@PathVariable(value = "id") String id) throws
+    // Exception {
+    // JsonData json = new JsonData();
+    // try {
+    // AvionDelete km = new AvionDelete();
+    // km.setIdAvion(id);
+    // km.Create(null);
+    // json.setData(null);
+    // json.setMessage("Operation reussit");
+    // json.setStatus(true);
+    // } catch (Exception e) {
+    // json.setData(null);
+    // json.setMessage("Operation echoue ");
+    // json.setStatus(false);
+    // json.setErreur(e.getMessage());
+    // }
+    // return json;
+    // }
 
-    @CrossOrigin 
-    @GetMapping("/Vehicule/{id}/Kilometrages/")
-    public JsonData findKilometrage(@RequestHeader(name = "token") String token,@PathVariable(name = "id") String id,@RequestHeader(name = "idPersonne") String idPersonne) throws Exception {
-        Personne p=new Personne();
+    @CrossOrigin
+    @GetMapping("/Avion/{id}/Kilometrages/")
+    public JsonData findKilometrage(@RequestHeader(name = "token") String token, @PathVariable(name = "id") String id,
+            @RequestHeader(name = "idPersonne") String idPersonne) throws Exception {
+        Personne p = new Personne();
         p.setIdPersonne(idPersonne);
         p.setToken(token);
         JsonData json = new JsonData();
-        if(!p.VerifToken()){
+        if (!p.VerifToken()) {
             json.setData(null);
             json.setMessage("Impossible de se logger");
             json.setStatus(false);
-        }
-        else{
-             try {
+        } else {
+            try {
                 Kilometrage km = new Kilometrage();
-                km.setIdVehicule(id);
+                km.setIdAvion(id);
                 ObjetBDD[] liste = km.Find(null);
                 Kilometrage[] lv = new Kilometrage[liste.length];
                 System.arraycopy(liste, 0, lv, 0, lv.length);
-    
+
                 json.setData(lv);
                 json.setMessage("Operation reussit");
                 json.setStatus(true);
@@ -135,16 +139,17 @@ public class VehiculeController {
                 json.setMessage("Operation echoue");
                 json.setStatus(false);
                 json.setErreur(e.getMessage());
-            } 
+            }
         }
         return json;
     }
-    @GetMapping("/Vehicule/{id}/Assurances/")
-    public JsonData findAssurance(@PathVariable(name = "id") String id) throws Exception{
+
+    @GetMapping("/Avion/{id}/Assurances/")
+    public JsonData findAssurance(@PathVariable(name = "id") String id) throws Exception {
         JsonData json = new JsonData();
         try {
-            Assurance a=new Assurance();
-            a.setIdVehicule(id);
+            Assurance a = new Assurance();
+            a.setidAvion(id);
             ObjetBDD[] liste = a.Find(null);
             Assurance[] lv = new Assurance[liste.length];
             System.arraycopy(liste, 0, lv, 0, lv.length);
@@ -155,8 +160,42 @@ public class VehiculeController {
             json.setData(null);
             json.setMessage("Operation echoue");
             json.setStatus(false);
-            json.setErreur(e.getMessage());
-        } 
+            e.printStackTrace();
+            json.setErreur(e.toString());
+        }
+        return json;
+    }
+
+    @CrossOrigin
+    @GetMapping("/Avion/{id}/DateEntretiens/")
+    public JsonData findDateEntretien(@RequestHeader(name = "token") String token, @PathVariable(name = "id") String id,
+            @RequestHeader(name = "idPersonne") String idPersonne) throws Exception {
+        Personne p = new Personne();
+        p.setIdPersonne(idPersonne);
+        p.setToken(token);
+        JsonData json = new JsonData();
+        if (!p.VerifToken()) {
+            json.setData(null);
+            json.setMessage("Impossible de se logger");
+            json.setStatus(false);
+        } else {
+            try {
+                DateEntretien km = new DateEntretien();
+                km.setIdAvion(id);
+                ObjetBDD[] liste = km.Find(null);
+                DateEntretien[] lv = new DateEntretien[liste.length];
+                System.arraycopy(liste, 0, lv, 0, lv.length);
+
+                json.setData(lv);
+                json.setMessage("Operation reussit");
+                json.setStatus(true);
+            } catch (Exception e) {
+                json.setData(null);
+                json.setMessage("Operation echoue");
+                json.setStatus(false);
+                json.setErreur(e.getMessage());
+            }
+        }
         return json;
     }
 }

@@ -1,6 +1,8 @@
 package Tp.model;
 
+
 import java.sql.Connection;
+import java.sql.Date;
 
 import Tp.dao.ObjetBDD;
 
@@ -10,6 +12,15 @@ public class Avion extends ObjetBDD {
     private int NbrPlace;
     private String idModele;
     private String Modele;
+    private String Photo;
+
+    public String getPhoto() {
+        return Photo;
+    }
+
+    public void setPhoto(String photo) {
+        Photo = photo;
+    }
 
     public Avion() {
         this.setNomTable("Avion");

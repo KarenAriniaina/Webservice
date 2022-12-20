@@ -7,11 +7,11 @@ import Tp.dao.ObjetBDD;
 
 public class Assurance extends ObjetBDD {
     private String idAssurance;
-    private String idVehicule;
+    private String idAvion;
     private Date DateDebut;
     private Date DateFin;
     private double MoisFin; 
-
+    
     public Assurance() {
         this.setNomTable("Assurance");
         this.setPrimaryKey("idAssurance");
@@ -25,12 +25,12 @@ public class Assurance extends ObjetBDD {
         this.idAssurance = idAssurance;
     }
 
-    public String getIdVehicule() {
-        return idVehicule;
+    public String getidAvion() {
+        return idAvion;
     }
 
-    public void setIdVehicule(String idVehicule) {
-        this.idVehicule = idVehicule;
+    public void setidAvion(String idAvion) {
+        this.idAvion = idAvion;
     }
 
     public Date getDateDebut() {
