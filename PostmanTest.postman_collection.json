@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "190a944c-6951-4d87-b8f3-879676a9615a",
+		"name": "PostmanTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZFBlcnNvbm5lIjoiUGVyc29ubmVfMSIsInN1YiI6IlBlcnNvbm5lXzEiLCJqdGkiOiJhMWIwMjEyNC0xMzhlLTQ1YWUtYmJmYS1jYjExNDlhZWQwYzMiLCJpYXQiOjE2NzE1NDE4MzIsImV4cCI6MTY3MTcxNDYzMn0.mfN4TrYfmpGwQ1-vhTaZHo-h-ODzpRL2tVuq4g_TR8U",
+						"type": "default"
+					},
+					{
+						"key": "idPersonne",
+						"value": "Personne_1",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://webservice-production.up.railway.app/Personne?email=admin@gmail.com&passwords=root",
+					"protocol": "https",
+					"host": [
+						"webservice-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"Personne"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "admin@gmail.com"
+						},
+						{
+							"key": "passwords",
+							"value": "root"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Liste Avion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://webservice-production.up.railway.app/Avions",
+					"protocol": "https",
+					"host": [
+						"webservice-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"Avions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assurance Avion_1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://webservice-production.up.railway.app/Avion/Avion_1/Assurances/",
+					"protocol": "https",
+					"host": [
+						"webservice-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"Avion",
+						"Avion_1",
+						"Assurances",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kilometrage vehicule_1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZFBlcnNvbm5lIjoiUGVyc29ubmVfMSIsInN1YiI6IlBlcnNvbm5lXzEiLCJqdGkiOiJhMWIwMjEyNC0xMzhlLTQ1YWUtYmJmYS1jYjExNDlhZWQwYzMiLCJpYXQiOjE2NzE1NDE4MzIsImV4cCI6MTY3MTcxNDYzMn0.mfN4TrYfmpGwQ1-vhTaZHo-h-ODzpRL2tVuq4g_TR8U",
+						"type": "default"
+					},
+					{
+						"key": "idPersonne",
+						"value": "Personne_1",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://webservice-production.up.railway.app/Avion/Avion_1/Kilometrages/",
+					"protocol": "https",
+					"host": [
+						"webservice-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"Avion",
+						"Avion_1",
+						"Kilometrages",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Date Maintenance",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZFBlcnNvbm5lIjoiUGVyc29ubmVfMSIsInN1YiI6IlBlcnNvbm5lXzEiLCJqdGkiOiJhMWIwMjEyNC0xMzhlLTQ1YWUtYmJmYS1jYjExNDlhZWQwYzMiLCJpYXQiOjE2NzE1NDE4MzIsImV4cCI6MTY3MTcxNDYzMn0.mfN4TrYfmpGwQ1-vhTaZHo-h-ODzpRL2tVuq4g_TR8U",
+						"type": "default"
+					},
+					{
+						"key": "idPersonne",
+						"value": "Personne_1",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://webservice-production.up.railway.app/Avion/Avion_1/DateEntretiens/",
+					"protocol": "https",
+					"host": [
+						"webservice-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"Avion",
+						"Avion_1",
+						"DateEntretiens",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
