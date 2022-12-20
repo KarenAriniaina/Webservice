@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -201,8 +202,8 @@ public class AvionController {
     }
 
     @CrossOrigin
-    @GetMapping("/Avions/{st}")
-    public JsonData teste( @PathVariable(name = "st") String id) throws Exception {
+    @PutMapping("/Avions/")
+    public JsonData teste( @RequestParam(name = "base64") String id) throws Exception {
         System.out.println(id);
         return null;
     }
