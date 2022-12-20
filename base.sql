@@ -4,6 +4,7 @@ CREATE TABLE DateEntretien (idDateEntretien varchar(30) NOT NULL, idAvion varcha
 CREATE TABLE Entretien (idEntretien varchar(30) NOT NULL, Intitule varchar(100) NOT NULL UNIQUE, PRIMARY KEY (idEntretien));
 CREATE TABLE Kilometrage (idKilometrage varchar(30) NOT NULL, idAvion varchar(30) NOT NULL, date date NOT NULL, debutKm float8 NOT NULL, finKm float8 NOT NULL, PRIMARY KEY (idKilometrage));
 CREATE TABLE Modele (idModele varchar(30) NOT NULL, Intitule varchar(100) NOT NULL UNIQUE, PRIMARY KEY (idModele));
+CREATE TABLE Personne (idPersonne varchar(30) NOT NULL, nom varchar(100) NOT NULL, mail varchar(100) NOT NULL UNIQUE, passwords varchar(100) NOT NULL, PRIMARY KEY (idPersonne));
 ALTER TABLE Kilometrage ADD CONSTRAINT FKKilometrag226573 FOREIGN KEY (idAvion) REFERENCES Avion (idAvion);
 ALTER TABLE Assurance ADD CONSTRAINT FKAssurance79244 FOREIGN KEY (idAvion) REFERENCES Avion (idAvion);
 ALTER TABLE DateEntretien ADD CONSTRAINT FKDateEntret693585 FOREIGN KEY (idAvion) REFERENCES Avion (idAvion);
@@ -18,6 +19,7 @@ ALTER TABLE Assurance DROP CONSTRAINT FKAssurance79244;
 ALTER TABLE DateEntretien DROP CONSTRAINT FKDateEntret693585;
 ALTER TABLE DateEntretien DROP CONSTRAINT FKDateEntret705301;
 ALTER TABLE Avion DROP CONSTRAINT FKAvion847253;
+DROP TABLE IF EXISTS Personne CASCADE;
 DROP TABLE IF EXISTS Assurance CASCADE;
 DROP TABLE IF EXISTS Avion CASCADE;
 DROP TABLE IF EXISTS DateEntretien CASCADE;
