@@ -2,8 +2,6 @@ package Tp.model;
 
 
 import java.sql.Connection;
-import java.sql.Date;
-
 import Tp.dao.ObjetBDD;
 
 public class Avion extends ObjetBDD {

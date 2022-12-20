@@ -149,7 +149,7 @@ public class AvionController {
         JsonData json = new JsonData();
         try {
             Assurance a = new Assurance();
-            a.setidAvion(id);
+            a.setIdAvion(id);
             ObjetBDD[] liste = a.Find(null);
             Assurance[] lv = new Assurance[liste.length];
             System.arraycopy(liste, 0, lv, 0, lv.length);

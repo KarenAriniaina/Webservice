@@ -56,13 +56,13 @@ public class Kilometrage extends ObjetBDD{
         this.finKm = finKm;
     }
     
-    @Override
-    public ObjetBDD[] Find(Connection c) throws Exception {
-        this.setNomTable("v_Kilometrage");
-        ObjetBDD[] valiny=super.Find(c);
-        this.setNomTable("Kilometrage");
-        return valiny;
-    }  
+    // @Override
+    // public ObjetBDD[] Find(Connection c) throws Exception {
+    //     this.setNomTable("v_Kilometrage");
+    //     ObjetBDD[] valiny=super.Find(c);
+    //     this.setNomTable("Kilometrage");
+    //     return valiny;
+    // }  
     
 	
 }
